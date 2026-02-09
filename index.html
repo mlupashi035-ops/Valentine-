@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mabanse ❤️ Tamika</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffb6c1, #ffc0cb);
+      padding: 20px;
+    }
+    h1 {
+      font-size: 30px;
+    }
+    h3 {
+      font-weight: normal;
+    }
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    img {
+      width: 200px;
+      border-radius: 15px;
+      margin: 10px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 25px;
+      margin: 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    #no {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/NY4c-_e1oVY?loop=1&playlist=NY4c-_e1oVY"
+frameborder="0"
+allow="autoplay"></iframe>
+
+<h1>Mabanse Lupashi ❤️ Tamika Chirambo</h1>
+<h3>Miles apart, hearts together 💕</h3>
+
+<!-- Photos -->
+<div>
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+</div>
+
+<br>
+
+<!-- Love Message -->
+<p>
+<strong>Tamika Chirambo (my Tamsy),</strong>
+<br><br>
+Distance has tried its best, but it still hasn’t figured out how strong my love for you is.
+Every message, every call, every moment I think of you reminds me that what we have is real and special.
+<br><br>
+No matter how far apart we are, my heart has always known where it belongs — with you, Tamsy.
+<br><br>
+<strong>So today, and every day, I ask you… will you be my Valentine? 💌</strong>
+<br><br>
+<em>Forever yours,</em><br>
+<strong>Mabanse Lupashi ❤️</strong>
+</p>
+
+<br>
+
+<button onclick="alert('Yaaay!! 💖 You just made me the happiest man alive!')">
+YES 💘
+</button>
+
+<button id="no" onmouseover="moveButton()">
+NO 💔
+</button>
+
+<script>
+function moveButton() {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  document.getElementById("no").style.left = x + "px";
+  document.getElementById("no").style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
