@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I Love You Tamsy ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 30vh;
+      font-size: 32px;
+    }
+    p {
+      font-size: 20px;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Fireworks Canvas -->
+<canvas id="fireworks"></canvas>
+
+<h1>I love you, Tamsy ❤️</h1>
+<p>You just made me the happiest man alive 💖</p>
+<p>Distance has nothing on us 🌍✨</p>
+
+<script>
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function Firework() {
+  this.x = random(0, canvas.width);
+  this.y = canvas.height;
+  this.targetY = random(0, canvas.height / 2);
+  this.speed = random(4, 7);
+  this.exploded = false;
+  this.particles = [];
+}
+
+Firework.prototype.update = function () {
+  if (!this.exploded) {
+    this.y -= this.speed;
+    if (this.y <= this.targetY) {
+      this.exploded = true;
+      for (let i = 0; i < 50; i++) {
+        this.particles.push({
+          x: this.x,
+          y: this.y,
+          dx: random(-4, 4),
+          dy: random(-4, 4),
+          life: 100
+        });
+      }
+    }
+  } else {
+    this.particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+      p.life--;
+    });
+  }
+};
+
+Firework.prototype.draw = function () {
+  if (!this.exploded) {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(this.x, this.y, 2, 10);
+  } else {
+    this.particles.forEach(p => {
+      ctx.fillStyle = 'pink';
+      ctx.fillRect(p.x, p.y, 3, 3);
+    });
+  }
+};
+
+let fireworks = [];
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (Math.random() < 0.05) {
+    fireworks.push(new Firework());
+  }
+  fireworks.forEach((f, i) => {
+    f.update();
+    f.draw();
+    if (f.exploded && f.particles.every(p => p.life <= 0)) {
+      fireworks.splice(i, 1);
+    }
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
